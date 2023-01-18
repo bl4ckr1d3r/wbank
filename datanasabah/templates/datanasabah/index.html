@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block main %}
+<a href="{% url 'createnasabah' %}" type="button" class="btn btn-success ml-5 mb-3">create</a>
+<div class="container">
+<table class="table table-striped table-bordered table-paginate" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Alamat</th>
+            <th>No Handphone</th>
+            <th>Jumlah Anggota</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Alamat</th>
+            <th>No Handphone</th>
+            <th>Jumlah Anggota</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </tfoot>
+
+    <tbody>
+        {% for data in datanasabah %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{data.nama}}</td>
+            <td>{{data.alamat}}</td>
+            <td>{{data.nohp}}</td>
+            <td>{{data.jumlahanggota}}</td>
+            <td><a href="{% url 'updatenasabah' data.id %}" type="button" class="btn btn-info ">Update</a></td>
+            <td><a href="{% url 'deletenasabah' data.id %}" type="button" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}

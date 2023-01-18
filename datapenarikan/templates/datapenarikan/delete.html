@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block main %}
+ <div class="customlogin">
+    <form action="{% url 'deletepenarikan' item.id %}" method="POST">
+        {% csrf_token %}
+        <h4> Apakah anda yakin akan menghapus {{item}} </h4>
+        <a href="{% url 'datapenarikan' %}" class="btn btn-danger mr-5 mt-3"> Cancel</a>
+        <button type="submit" class="btn btn-success mt-3" > Delete </button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block main %}
+<a href="{% url 'createpenarikan' %}" type="button" class="btn btn-success ml-5 mb-3">create</a>
+<div class="container">
+<table class="table table-striped table-bordered table-paginate" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>No Rekening</th>
+            <th>Nama</th>
+            <th>Jumlah</th>
+            <th>Keterangan</th>
+            <th>Tanggal</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <th>No</th>
+            <th>No Rekening</th>
+            <th>Nama</th>
+            <th>Jumlah</th>
+            <th>Keterangan</th>
+            <th>Tanggal</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </tfoot>
+
+    <tbody>
+        {% for data in datapenarikan %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{data.norekening}}</td>
+            <td>{{data.norekening.nama}}</td>
+            <td>{{data.jumlah}}</td>
+            <td>{{data.keterangan}}</td>
+            <td>{{data.waktudibuat}}</td>
+            <td><a href="{% url 'updatepenarikan' data.id %}" type="button" class="btn btn-info ">Update</a></td>
+            <td><a href="{% url 'deletepenarikan' data.id %}" type="button" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}

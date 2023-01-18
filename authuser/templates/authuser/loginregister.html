@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{% static 'asset/css/style.css' %}">
+    <link href="{% static 'asset/css/bootstrap.min.css' %}" rel="stylesheet" >
+
+</head>
+<body>
+  <img src="{% static 'asset/img/banner.png' %}" alt="banner">
+    <div class="container">
+      
+      <div class="customlogin">
+    <form method="post" class="form">
+      {% csrf_token%}
+      <h1>Login</h1>
+      {% for message in messages%}
+        <div class="alert alert-danger">{{message}}</div>
+      {% endfor %} 
+        <div class="mb-3">
+          <label for="Username" class="form-label">Username </label>
+          <input type="text" class="form-control" name="username" id="Username ">
+          
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+        </div>
+          <button type="submit" class="btn btn-success">login</button>
+      </form>
+    </div>
+    </div>
+   
+          
+</body>
+</html>

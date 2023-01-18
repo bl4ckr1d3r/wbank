@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block main %}
+<a href="{% url 'createpembeliansampah' %}" type="button" class="btn btn-success ml-5 mb-3">create</a>
+<div class="container">
+<table class="table table-striped table-bordered table-paginate" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Kode Pembelian</th>
+            <th>No Rekening</th>
+            <th>Tanggal</th>
+            <th>Jenis Sampah</th>
+            <th>Berat</th>
+            <th>Jumlah</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <th>No</th>
+            <th>Kode Pembelian</th>
+            <th>No Rekening</th>
+            <th>Tanggal</th>
+            <th>Jenis Sampah</th>
+            <th>Berat</th>
+            <th>Jumlah</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </tfoot>
+
+    <tbody>
+        {% for data in datapembeliansampah %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{data.kdpembeliansampah}}</td>
+            <td>{{data.norekening}}</td>
+            <td>{{data.tanggal}}</td>
+            <td>{{data.jenissampah}}</td>
+            <td>{{data.berat}}</td>
+            <td>{{data.jumlah}}</td>
+            <td><a href="{% url 'updatepembeliansampah' data.id %}" type="button" class="btn btn-info ">Update</a></td>
+            <td><a href="{% url 'deletepembeliansampah' data.id %}" type="button" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}
